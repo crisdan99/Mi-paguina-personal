@@ -1,125 +1,208 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Crisdan – Developer</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: radial-gradient(circle at top, #0f2027, #000);
-      color: #fff;
-    }
+<meta charset="UTF-8">
+<title>Crisdan – Inicio Retro Futurista</title>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    background: #000;
+    color: #0ff;
+    overflow-x: hidden;
+  }
 
-    /* Barra de menú derecha */
-    nav {
-      position: fixed;
-      top: 50%;
-      right: 0;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      background: rgba(0,0,0,0.4);
-      border-left: 2px solid #00ffe1;
-      padding: 20px 10px;
-      border-radius: 10px 0 0 10px;
-    }
+  /* Menú derecho */
+  nav {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    background: rgba(0,0,0,0.5);
+    border-left: 2px solid #0ff;
+    padding: 20px 10px;
+    border-radius: 10px 0 0 10px;
+  }
 
-    nav a {
-      margin: 10px 0;
-      padding: 10px 20px;
-      color: #00ffe1;
-      text-decoration: none;
-      border-radius: 20px;
-      border: 1px solid #00ffe1;
-      text-align: center;
-      transition: 0.3s;
-    }
+  nav a {
+    margin: 10px 0;
+    padding: 10px 20px;
+    color: #0ff;
+    text-decoration: none;
+    border-radius: 20px;
+    border: 1px solid #0ff;
+    text-align: center;
+    transition: 0.3s;
+  }
 
-    nav a:hover {
-      background: #00ffe1;
-      color: #000;
-      box-shadow: 0 0 15px #00ffe1;
-    }
+  nav a:hover {
+    background: #0ff;
+    color: #000;
+    box-shadow: 0 0 15px #0ff;
+  }
 
-    header {
-      padding: 80px 20px;
-      text-align: center;
-    }
+  header {
+    text-align: center;
+    padding: 80px 20px 40px 20px;
+  }
 
-    h1 {
-      font-size: 3em;
-      letter-spacing: 4px;
-    }
+  /* Nombre animado */
+  #name {
+    font-size: 4em;
+    font-weight: bold;
+  }
 
-    h2 {
-      font-weight: normal;
-      color: #00ffe1;
-    }
+  /* Descripción */
+  #desc {
+    margin-top: 20px;
+    font-size: 1.3em;
+    color: #0ff;
+  }
 
-    /* Círculo para Discord u otro link */
-    .circle-link {
-      display: inline-block;
-      margin-top: 30px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      border: 2px solid #00ffe1;
-      color: #00ffe1;
-      line-height: 60px;
-      text-align: center;
-      font-weight: bold;
-      text-decoration: none;
-      transition: 0.3s;
-    }
+  /* Ventanas de proyectos/API */
+  .window-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 50px;
+  }
 
-    .circle-link:hover {
-      background: #00ffe1;
-      color: #000;
-      box-shadow: 0 0 20px #00ffe1;
-    }
+  .window {
+    background: rgba(0,255,255,0.05);
+    border: 1px solid #0ff;
+    border-radius: 10px;
+    padding: 20px;
+    width: 250px;
+    height: 150px;
+    color: #0ff;
+    font-size: 1em;
+    transition: 0.3s;
+  }
 
-    footer {
-      margin-top: 80px;
-      font-size: 0.9em;
-      color: #aaa;
-      text-align: center;
-    }
-  </style>
+  .window:hover {
+    background: rgba(0,255,255,0.15);
+    box-shadow: 0 0 20px #0ff;
+  }
+
+  /* Botón redes sociales */
+  #socialBtn {
+    display: block;
+    margin: 50px auto 20px auto;
+    padding: 15px 30px;
+    border: 1px solid #0ff;
+    border-radius: 30px;
+    color: #0ff;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1em;
+    transition: 0.3s;
+  }
+
+  #socialBtn:hover {
+    background: #0ff;
+    color: #000;
+    box-shadow: 0 0 20px #0ff;
+  }
+
+  /* Panel redes */
+  #socialPanel {
+    display: none;
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .social-link {
+    display: inline-block;
+    margin: 5px;
+    padding: 10px 15px;
+    border: 1px solid #0ff;
+    border-radius: 10px;
+    color: #0ff;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  .social-link:hover {
+    background: #0ff;
+    color: #000;
+    box-shadow: 0 0 15px #0ff;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    margin-top: 100px;
+    font-size: 0.9em;
+    color: #0ff;
+  }
+
+</style>
 </head>
 <body>
 
 <header>
-  <h1>CRISDAN</h1>
-  <h2>Desarrollador • Software Libre • Mods & Sistemas</h2>
-
-  <p>
-    Creo aplicaciones, mods, APIs y proyectos experimentales.<br>
-    Amante de la construcción y los sistemas técnicos 🚧
-  </p>
-
-  <div class="buttons">
-    <a class="btn" href="proyectos.html">Proyectos</a>
-    <a class="btn" href="mods.html">Mods</a>
-    <a class="btn" href="descargas.html">Descargas</a>
-    <a class="btn" href="contacto.html">Contacto</a>
+  <div id="name">CRISDAN</div>
+  <div id="desc">
+    Hola, soy Crisdan, un estudiante que se dedica a crear software, mods y explorar nuevas tecnologías.<br>
+    En mis tiempos libres me gusta experimentar y descubrir cosas nuevas.
   </div>
 
-  <!-- Círculo para link de Discord u otro -->
-  <a class="circle-link" href="#" title="Discord">D</a>
+  <!-- Ventanas ejemplo -->
+  <div class="window-container">
+    <div class="window">Proyecto 1</div>
+    <div class="window">Proyecto 2</div>
+    <div class="window">API 1</div>
+    <div class="window">API 2</div>
+  </div>
+
+  <!-- Botón redes sociales -->
+  <button id="socialBtn">Redes Sociales</button>
+  <div id="socialPanel">
+    <a href="#" class="social-link">YouTube</a>
+    <a href="#" class="social-link">Instagram</a>
+    <a href="#" class="social-link">Facebook</a>
+    <a href="#" class="social-link">Discord</a>
+    <a href="#" class="social-link">Gmail</a>
+    <a href="#" class="social-link">TikTok</a>
+    <a href="#" class="social-link">X</a>
+    <a href="#" class="social-link">Click XD</a>
+  </div>
 </header>
 
-<!-- Barra de menú derecha -->
+<!-- Menú derecho -->
 <nav>
+  <a href="index.html">Inicio</a>
   <a href="proyectos.html">Proyectos</a>
   <a href="mods.html">Mods</a>
   <a href="descargas.html">Descargas</a>
   <a href="contacto.html">Contacto</a>
+  <a href="api.html">API</a>
 </nav>
 
 <footer>
-  © Crisdan – Proyecto personal
+  © 2026 Crisdan – Todos los derechos reservados
 </footer>
 
+<script>
+  // Animación de color cíclico para el nombre
+  const nameEl = document.getElementById('name');
+  const colors = ['#00ffff', '#00aaff', '#008888', '#005577', '#00ff88', '#0ff'];
+  let i = 0;
+  setInterval(() => {
+    nameEl.style.color = colors[i];
+    i = (i + 1) % colors.length;
+  }, 1000);
+
+  // Mostrar/ocultar panel redes
+  const socialBtn = document.getElementById('socialBtn');
+  const socialPanel = document.getElementById('socialPanel');
+  socialBtn.addEventListener('click', () => {
+    socialPanel.style.display = socialPanel.style.display === 'block' ? 'none' : 'block';
+  });
+</script>
+
 </body>
-</html>
+      </html>
